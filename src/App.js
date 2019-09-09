@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
+import Navigation from './components/Navigation';
 import Form from './components/Form';
 
 function App() {
-  const [team, setTeam] = useState([]);
+  const [teamList, setTeamList] = useState([]);
 
+  useEffect(() => {
+    console.log(setTeamList(), 'Setting the state to the current list.')
+    setTeamList()
+  }, [])
+  
   return (
-    <div>
-      <Route exact path='/' render={props => <Form {...props} /> } />
+    <div className="homePage">
+      <Navigation />
+      <Route exact path='/' />
+      <Route path='/form' render={props => <Form {...props} teamList={teamList} /> } />
     </div>
   );
 }
