@@ -62,9 +62,10 @@ label {
 }
 
 input {
-  background-color: rgb(189, 189, 189);
+  background-color: rgb(236, 236, 236);
   height: 25px;
   width: 300px;
+  cursor: auto;
 }
 
 .formButton {

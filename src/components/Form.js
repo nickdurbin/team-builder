@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Form() {
+function Form(props) {
   const [team, setTeam] = useState({
     name: '',
     email: '',
@@ -17,13 +17,18 @@ function Form() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(event);
+    setTeam({ 
+      name: '',
+      email: '',
+      role: '',
+      location: ''
+    })
   } 
 
   return (
     <div className="team-form">
       <form onSubmit={event => handleSubmit(event)}>
-        <h1>Fill Out The Form</h1>
+        <h1>Add Team Member</h1>
         <label>
           <input type="text" name="name" value={team.name} placeholder="Name..." onChange={event => handleChange(event)} />
         </label>
