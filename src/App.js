@@ -7,7 +7,7 @@ import TeamList from './components/TeamList';
 import { data } from './data';
 
 function App() {
-  const [teamList, setTeamList] = useState([data]);
+  const [teamList, setTeamList] = useState(data);
   const [editCard, setEditCard] = useState();
   console.log(teamList);
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="homePage">
       <Navigation />
-      <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} memmberToEdit={memberToEdit} /> } />
+      <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} memberToEdit={memberToEdit} /> } />
       <Route path='/form' render={props => <Form {...props} teamList={teamList} /> } />
     </div>
   );
