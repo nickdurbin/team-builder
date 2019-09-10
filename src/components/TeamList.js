@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TeamList({teamList}) {
+function TeamList({teamList, memberToEdit}) {
 
   return (
     <div>
@@ -11,6 +11,7 @@ function TeamList({teamList}) {
          <h2> {member.email} </h2>
          <h2> {member.role} </h2>
          <h2> {member.location} </h2>
+         <button className="editBtn" onClick={() => memberToEdit()}>Edit</button>
         </div>
       ))}
     </div>

@@ -8,16 +8,21 @@ import { data } from './data';
 
 function App() {
   const [teamList, setTeamList] = useState([data]);
+  const [editCard, setEditCard] = useState();
   console.log(teamList);
 
   useEffect(() => {
     setTeamList(data);
   }, [])
+
+  const memberToEdit = () => {
+    setEditCard(teamList)
+  }
   
   return (
     <div className="homePage">
       <Navigation />
-      <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} /> } />
+      <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} memmberToEdit={memberToEdit} /> } />
       <Route path='/form' render={props => <Form {...props} teamList={teamList} /> } />
     </div>
   );
