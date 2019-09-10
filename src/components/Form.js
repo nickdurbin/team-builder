@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Form({ teamList }) {
+function Form(props) {
   const [team, setTeam] = useState({
     name: '',
     email: '',
@@ -17,7 +17,8 @@ function Form({ teamList }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setTeam([...teamList, team])
+    props.setTeamList([...props.teamList, team])
+    props.history.push('/')
     resetForm();
   } 
 
@@ -44,7 +45,7 @@ function Form({ teamList }) {
           <input type="text" name="role" value={team.role} placeholder="Role..." onChange={event => handleChange(event)} />
         </label>
         <label>
-          <input type="text" name="location" placeholder="Location..." value={team.location} onChange={event => handleChange(event)} />
+          <input type="text" name="location" value={team.location} placeholder="Location..." onChange={event => handleChange(event)} />
         </label>
         <button className="formButton">Submit</button>
       </form>

@@ -2,6 +2,7 @@ import React from 'react';
 
 function TeamList({teamList, memberToEdit}) {
 
+  console.log(teamList, 'This is in TeamList')
   return (
     <div>
       {teamList.map((member, index) => (

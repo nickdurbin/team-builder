@@ -9,10 +9,10 @@ import { data } from './data';
 function App() {
   const [teamList, setTeamList] = useState(data);
   const [editCard, setEditCard] = useState();
-  console.log(teamList);
 
-  useEffect(() => {
+  useEffect((props) => {
     setTeamList(data);
+    
   }, [])
 
   const memberToEdit = () => {
@@ -23,7 +23,7 @@ function App() {
     <div className="homePage">
       <Navigation />
       <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} memberToEdit={memberToEdit} /> } />
-      <Route path='/form' render={props => <Form {...props} teamList={teamList} /> } />
+      <Route path='/form' render={props => <Form {...props} teamList={teamList} setTeamList={setTeamList} /> } />
     </div>
   );
 }
