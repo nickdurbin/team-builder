@@ -8,10 +8,11 @@ import { data } from './data';
 
 function App() {
   const [teamList, setTeamList] = useState(data);
+  const [editMember, setEditMember] = useState();
 
   useEffect(() => {
-    setTeamList(data);
-  }, [])
+    if(editMember) return setTeamList(editMember);
+  }, [editMember])
 
   const memberToEdit = (id) => {
    teamList.filter((team) => team.id !== id)
