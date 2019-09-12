@@ -15,19 +15,21 @@ function App() {
   }, [editMember])
 
   const memberToEdit = (id) => {
-   teamList.filter((team) => team.id !== id)
+    teamList.filter((team) => team.id !== id)
   }
 
   const deleteMember = (id) => {
     const NewMembers = teamList.filter((team) => team.id !== id)
+    setTeamList(NewMembers)
   }
   
   return (
     <div className="homePage">
       <Navigation />
-      <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} memberToEdit={memberToEdit} deleteMember={deleteMember} /> } />
+      <Route exact path='/' render={props => <TeamList {...props} teamList={teamList} deleteMember={deleteMember} /> } />
       {/* <Route exact path='/:id' render={props => <TeamList {...props} teamList={teamList} memberToEdit={memberToEdit} /> } /> */}
       <Route path='/form' render={props => <Form {...props} teamList={teamList} setTeamList={setTeamList} /> } />
+      <Route path='/form/:id' render={props => <Form {...props} teamList={teamList} setTeamList={setTeamList} memberToEdit={memberToEdit} /> } />
     </div>
   );
 }
